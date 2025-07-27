@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="Events.html">Events</a></li>
+        <li><a href="menu.html">Menu</a></li>
+        <li><a href="location.html">Location</a></li>
+        <li><a href="contactUs.html">Contact Us</a></li>
+    </ul>
+    
+    
+    <!--Navigation Form-->
+    <nav>
+
+        <h2>Contact Us</h2>
+        <form id="contactForm" onsubmit="return validateForm()">
+          <label for="name">Name:</label>
+          <input type="text" id="name" name="name" placeholder="Your name">
+          <span id="nameError" class="error"></span>
+      
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email" placeholder="Your email">
+          <span id="emailError" class="error"></span>
+      
+          <label for="message">Message:</label>
+          <textarea id="message" name="message" rows="5" placeholder="Your message"></textarea>
+          <span id="messageError" class="error"></span>
+      
+          <button type="submit">Submit</button>
+        </form>
+      
+        <script>
+          function validateForm() {
+            let isValid = true;
+      
+            // Clear previous error messages
+            document.getElementById("nameError").textContent = "";
+            document.getElementById("emailError").textContent = "";
+            document.getElementById("messageError").textContent = "";
+      
+            // Validate Name
+            const name = document.getElementById("name").value.trim();
+            if (name === "") {
+              document.getElementById("nameError").textContent = "Name is required.";
+              isValid = false;
+            }
+      
+            // Validate Email
+            const email = document.getElementById("email").value.trim();
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (email === "") {
+              document.getElementById("emailError").textContent = "Email is required.";
+              isValid = false;
+            } else if (!emailPattern.test(email)) {
+              document.getElementById("emailError").textContent = "Enter a valid email address.";
+              isValid = false;
+            }
+      
+            // Validate Message
+            const message = document.getElementById("message").value.trim();
+            if (message === "") {
+              document.getElementById("messageError").textContent = "Message is required.";
+              isValid = false;
+            }
+      
+            return isValid; // Prevent form submission if validation fails
+          }
+        </script>
+        </nav>
+      </body>
+</html>
